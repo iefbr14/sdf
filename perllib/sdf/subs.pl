@@ -26,6 +26,7 @@ $VERSION{''.__FILE__} = '$Revision$';
 # >>Implementation::
 #
 
+
 
 # Make sure we can call the Value function from the main package
 sub Value {&SDF_USER'Value;}
@@ -608,6 +609,7 @@ sub ReportEvents {
     }
 }
 
+
 #
 # >>Description::
 # {{Y:ExecEventsStyleMask}} executes events of a particular type.
@@ -621,8 +623,8 @@ sub ExecEventsStyleMask {
     local($old_match_rule);
 
     # Ensure multi-line matching is enabled
-    $old_match_rule = $*;
-    $* = 1;
+#    $old_match_rule = $*;
+#    local($*) = 1;
 
     for ($event = $#code; $event >= 0; $event--) {
 
@@ -641,7 +643,7 @@ sub ExecEventsStyleMask {
     }
 
     # Restore the multi-line match flag setting
-    $* = $old_match_rule;
+#    $* = $old_match_rule;
 }
 
 #
@@ -656,9 +658,9 @@ sub ExecEventsNameMask {
     local($event, $action, $mask);
     local($old_match_rule);
 
-    # Ensure multi-line matching is enabled
-    $old_match_rule = $*;
-    $* = 1;
+#    # Ensure multi-line matching is enabled
+#    $old_match_rule = $*;
+#    $* = 1;
 
     for ($event = $#code; $event >= 0; $event--) {
 
@@ -676,7 +678,7 @@ sub ExecEventsNameMask {
     }
 
     # Restore the multi-line match flag setting
-    $* = $old_match_rule;
+#    $* = $old_match_rule;
 }
 #
 # >>Description::

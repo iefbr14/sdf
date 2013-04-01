@@ -1,0 +1,14 @@
+MYMETA.json
+MYMETA.yml
+Makefile
+bin/MYMETA.json
+bin/MYMETA.yml
+bin/Makefile
+bin/pm_to_blib
+blib/
+perllib/MYMETA.json
+perllib/MYMETA.yml
+perllib/Makefile
+perllib/pm_to_blib
+pm_to_blib
+
