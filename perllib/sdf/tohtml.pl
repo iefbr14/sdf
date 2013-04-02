@@ -840,18 +840,11 @@ sub _HtmlEscape {
 #   local($result);
     local($old_match_flag);
 
-    # Enable multi-line matching
-    $old_match_flag = $*;
-    $* = 1;
-
     # Escape the symbols
     $text =~ s/\&/&amp;/g;
     $text =~ s/\</&lt;/g;
     $text =~ s/\>/&gt;/g;
     $text =~ s/\"/&quot;/g;
-
-    # Reset multi-line matching flag
-    $* = $old_match_flag;
 
     # Return result
     $text;
@@ -980,10 +973,6 @@ sub _HtmlAddAnchors {
     local($user_ext);
     local($old_match_flag);
 
-    # Enable multi-line matching
-    $old_match_flag = $*;
-    $* = 1;
-
     # For hypertext jumps, surround the text. If the
     # text contains a jump, the existing jump is removed.
     if ($attr{'jump'} ne '') {
@@ -998,7 +987,7 @@ sub _HtmlAddAnchors {
         }
         $value = &_HtmlEscape($value);
 
-        $text =~ s/\<A HREF\=[^>]+\>(.*)\<\/A\>/$1/;
+        $text =~ s/\<A HREF\=[^>]+\>(.*)\<\/A\>/$1/s;
         $text = "<A HREF=\"$value\">$text</A>";
         delete $attr{'jump'};
         $result++;
@@ -1018,9 +1007,6 @@ sub _HtmlAddAnchors {
         delete $attr{'id'};
         $result++;
     }
-
-    # Reset multi-line matching flag
-    $* = $old_match_flag;
 
     # Return result
     return $result;

@@ -391,16 +391,9 @@ sub _PodEscape {
 #   local($result);
     local($old_match_flag);
 
-    # Enable multi-line matching
-    $old_match_flag = $*;
-    $* = 1;
-
     # Escape the symbols
     my $gt = $nested ? 'E<gt>' : '>';
-    $text =~ s/([A-Z])\<|\>/length($&) == 1 ? $gt : "$1E<lt>"/eg;
-
-    # Reset multi-line matching flag
-    $* = $old_match_flag;
+    $text =~ s/([A-Z])\<|\>/length($&) == 1 ? $gt : "$1E<lt>"/egs;
 
     # Return result
     $text;

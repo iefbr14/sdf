@@ -622,10 +622,6 @@ sub ExecEventsStyleMask {
     local($event, $action, $mask);
     local($old_match_rule);
 
-    # Ensure multi-line matching is enabled
-#    $old_match_rule = $*;
-#    local($*) = 1;
-
     for ($event = $#code; $event >= 0; $event--) {
 
         # get the action to execute, if any
@@ -643,7 +639,6 @@ sub ExecEventsStyleMask {
     }
 
     # Restore the multi-line match flag setting
-#    $* = $old_match_rule;
 }
 
 #
@@ -657,10 +652,6 @@ sub ExecEventsNameMask {
 #   local();
     local($event, $action, $mask);
     local($old_match_rule);
-
-#    # Ensure multi-line matching is enabled
-#    $old_match_rule = $*;
-#    $* = 1;
 
     for ($event = $#code; $event >= 0; $event--) {
 
@@ -676,9 +667,6 @@ sub ExecEventsNameMask {
         eval $action;
         &'AppMsg("warning", "execution of '$action' failed: $@") if $@;
     }
-
-    # Restore the multi-line match flag setting
-#    $* = $old_match_rule;
 }
 #
 # >>Description::

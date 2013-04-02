@@ -670,14 +670,11 @@ sub _MifEscape {
 #   local();
     local($orig_linematch_flag);
 
-    $orig_linematch_flag = $*;
-    $* = 1;
     $text =~ s/([\\>])/\\$1/g;
     $text =~ s/\t/\\t/g;
     $text =~ s/'/\\q/g;
     $text =~ s/`/\\Q/g;
     $text =~ s/ /\\ /g if $escape_space;
-    $* = $orig_linematch_flag;
 }
 
 #
@@ -2136,12 +2133,10 @@ $igc_start = time;
         "<Notes ",
         "> # end of Notes",
         @text);
-    $old_match_rule = $*;
-    $* = 1;
-    $mainflow =~ s/\<ParaLine/$&\n  <TextRectID $_MIF_TEXTFLOW_MAIN>/;
-    $mainflow =~ s/\n/\n /g;
+
+    $mainflow =~ s/\<ParaLine/$&\n  <TextRectID $_MIF_TEXTFLOW_MAIN>/s;
+    $mainflow =~ s/\n/\n /gs;
     $mainflow .= "\n> # end of TextFlow";
-    $* = $old_match_rule;
 
     # Add the text flows to the  import table
     push(@out_result, join("\n", @_mif_textflows, $mainflow));
@@ -2377,12 +2372,10 @@ sub _MifAddTextFlow {
     # Convert to a text flow
     if (@flow) {
         $textflow = join("\n", @flow);
-        $old_match_rule = $*;
-        $* = 1;
-        $textflow =~ s/\<ParaLine/$&\n  <TextRectID $id>/;
-        $textflow =~ s/\n/\n /g;
+
+        $textflow =~ s/\<ParaLine/$&\n  <TextRectID $id>/s;
+        $textflow =~ s/\n/\n /gs;
         $textflow .= "\n> # end of TextFlow";
-        $* = $old_match_rule;
     }
 
     # If nothing was generated, build the text flow with a dummy paragraph
@@ -2870,8 +2863,6 @@ sub _MifAddLists {
     # Insert the generated lists before the first level 1 heading
     push(@_mif_toc_list, @_mif_lof_list, @_mif_lot_list);
     if (@_mif_toc_list) {
-        $old_match_rule = $*;
-        $* = 1;
         $toc_offset = 0;
         para:
         for ($i = 0; $i <= $#text; $i++) {
@@ -2880,7 +2871,6 @@ sub _MifAddLists {
                 last para;
             }
         }
-        $* = $old_match_rule;
         splice(@text, $toc_offset, 0, @_mif_toc_list);
     }
 }
@@ -2945,8 +2935,6 @@ sub _MifMerge {
     
     # To permit multi-line matching, save the old state here and
     # restore it later      
-    $old_match_rule = $*;
-    $* = 1;
 
     #
     # Do the merge. We ignore BookComponent objects
@@ -3029,8 +3017,6 @@ sub _MifMerge {
         }
     }
     
-    # Return result
-    $* = $old_match_rule;
     return @new;    
 }
 

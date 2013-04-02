@@ -38,7 +38,7 @@ Requirements
 ------------
 
 SDF has been completely developed in Perl, a popular and highly
-portable scripting language. Perl 5.004 or later is recommended,
+portable scripting language. Perl 5.006 or later is recommended,
 although SDF will probably run on earlier versions of Perl 5.
 
 To generate PostScript, SDF requires one of the following:

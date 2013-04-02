@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl5
+#!/usr/bin/perl -w
 #
 # >>Title::     Build Documentation
 #
@@ -15,7 +15,8 @@
 #
 
 use Cwd;
-!require "sdf/name.pl";
+
+require "sdf/name.pl";
 
 # The root directory for documents
 $DOC_ROOT = cwd();
@@ -43,6 +44,7 @@ unless (@ARGV) {
     print "usage: build all          - all the documents\n";
     print "       build list_of_docs - some documents\n";
     print "       build local        - just home & catalog for local use\n";
+    print "       build pdf          - pdf docs\n";
     exit 1;
 }
 
@@ -51,6 +53,13 @@ if ($ARGV[0] eq 'local') {
     print "EXECUTING: sdf -2html -DLOCAL_DOCS home catalog\n";
     system("sdf -2html -DLOCAL_DOCS home catalog");
     exit();
+}
+
+my $PDF = 0;
+
+if ($ARGV[0] eq 'pdf') {
+	shift @ARGV;
+	$PDF = 1;
 }
 
 # Generate the documents
@@ -76,6 +85,10 @@ while (defined($doc = shift(@ARGV))) {
 
     # Generate the required outputs
     for $fmt (@fmts) {
+	next if ($PDF == 0 && $fmt eq 'book -zpdf');
+	next if ($PDF == 0 && $fmt eq 'pdf');
+	next if ($PDF == 0 && $fmt eq 'ps');
+
         print "EXECUTING: sdf -2$fmt $file\n";
         system("sdf -2$fmt $file");
     }

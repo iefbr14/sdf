@@ -419,8 +419,6 @@ sub _SgmlEscape {
     local($old_match_flag);
 
     # Enable multi-line matching
-    $old_match_flag = $*;
-    $* = 1;
 
     # Escape the special symbols. Note that it isn't exactly clear
     # from the SGML-Tools and/or QWERTZ DTD documentation as to
@@ -437,9 +435,6 @@ sub _SgmlEscape {
     $text =~ s/\\/&bsol;/g;
     $text =~ s/\|/&verbar;/g;
     $text =~ s/\[/&ftag;/g;
-
-    # Reset multi-line matching flag
-    $* = $old_match_flag;
 
     # Return result
     $text;
@@ -534,8 +529,6 @@ sub _SgmlAddAnchors {
     return 0;
 
     # Enable multi-line matching
-    $old_match_flag = $*;
-    $* = 1;
 
     # For hypertext jumps, surround the text. If the
     # text contains a jump, the existing jump is removed.
@@ -551,7 +544,7 @@ sub _SgmlAddAnchors {
         }
         $value = &_SgmlEscape($value);
 
-        $text =~ s/\<A HREF\=[^>]+\>(.*)\<\/A\>/$1/;
+        $text =~ s/\<A HREF\=[^>]+\>(.*)\<\/A\>/$1/s;
         $text = "<A HREF=\"$value\">$text</A>";
         delete $attr{'jump'};
         $result++;
@@ -571,9 +564,6 @@ sub _SgmlAddAnchors {
         delete $attr{'id'};
         $result++;
     }
-
-    # Reset multi-line matching flag
-    $* = $old_match_flag;
 
     # Return result
     return $result;

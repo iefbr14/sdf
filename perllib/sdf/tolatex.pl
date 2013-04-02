@@ -1042,10 +1042,6 @@ sub _LatexEscape {
 #   local($result);
     local($old_match_flag);
 
-    # Enable multi-line matching
-    $old_match_flag = $*;
-    $* = 1;
-
     # Escape the special symbols. Note that it isn't exactly clear
     # from the SGML-Tools and/or QWERTZ DTD documentation as to
     # whether all of these are mandatory, but they shouldn't cause
@@ -1066,9 +1062,6 @@ sub _LatexEscape {
     $text =~ s/\]/\$]\$/g;
     $text =~ s/\{/\\\{/g;
     $text =~ s/\}/\\\}/g;
-
-    # Reset multi-line matching flag
-    $* = $old_match_flag;
 
     # Return result
     $text;
