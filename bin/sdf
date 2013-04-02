@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # $Id$
 $VERSION{'PUBLIC'} = '2.001';
 $VERSION{''.__FILE__} = '$Revision$';
