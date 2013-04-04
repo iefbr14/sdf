@@ -257,6 +257,9 @@ if ($no_action) {
 
 # Otherwise, pass it to fmbatch for execution
 else {
+    if (! -x $fmbatch) {
+        &AppExit("fatal", "fmbatch not isntalled");
+    }
     # call fmbatch
     unless (open(FMBATCH, "|$fmbatch > $tmp_file")) {
         &AppExit("fatal", "failed to pipe data to fmbatch");
