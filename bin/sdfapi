@@ -73,8 +73,8 @@ $VERSION{''.__FILE__} = '$Revision$';
 # >>Implementation::
 #
 
-require "sdf/app.pl";
-require "sdf/apiperl.pl";
+require "SDF/app.pl";
+require "SDF/apiperl.pl";
 
 ########## Initialisation ##########
 
@@ -99,7 +99,7 @@ require "sdf/apiperl.pl";
 
 # define configuration
 %app_config = (
-    'libdir',   'sdf/home',
+    'libdir',   'SDF/home',
 );
 
 # define options

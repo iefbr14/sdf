@@ -274,15 +274,15 @@ $VERSION{''.__FILE__} = '$Revision$';
 # >>Implementation::
 #
 
-require "sdf/app.pl";
-require "sdf/parse.pl";
+require "SDF/app.pl";
+require "SDF/parse.pl";
 
 ########## Initialisation ##########
 
 # define configuration
 %app_config = (
     'inifile',  'sdf.ini',
-    'libdir',   'sdf/home',
+    'libdir',   'SDF/home',
 );
 
 # Table of format mappings
@@ -581,7 +581,7 @@ sub GenerateDocument {
     # Post filter the output, if requested
     if ($post_filter ne '') {
         &AppMsg("object", "'$post_filter' post filtering...") if $verbose >= 0;
-        require "sdf/post_$post_filter.pl";
+        require "SDF/post_$post_filter.pl";
         $fn = $post_filter . "_PostFilter";
         @new = eval {&$fn(*new)};
         &AppMsg('failed', $@) if $@;

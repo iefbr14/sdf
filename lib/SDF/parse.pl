@@ -55,13 +55,13 @@ $VERSION{''.__FILE__} = '$Revision$';
 # >>Implementation::
 #
 
-require "sdf/macros.pl";
-require "sdf/podmacs.pl";
-require "sdf/filters.pl";
-require "sdf/specials.pl";
-require "sdf/values.pl";
-require "sdf/subs.pl";
-require "sdf/calc.pl";
+require "SDF/macros.pl";
+require "SDF/podmacs.pl";
+require "SDF/filters.pl";
+require "SDF/specials.pl";
+require "SDF/values.pl";
+require "SDF/subs.pl";
+require "SDF/calc.pl";
 
 require Config;
 

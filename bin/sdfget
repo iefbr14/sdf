@@ -151,9 +151,9 @@ $VERSION{''.__FILE__} = '$Revision$';
 # >>Implementation::
 #
 
-require "sdf/app.pl";
-require "sdf/dict.pl";
-require "sdf/sdfget.pl";
+require "SDF/app.pl";
+require "SDF/dict.pl";
+require "SDF/sdfget.pl";
 
 ########## Initialisation ##########
 
@@ -221,7 +221,7 @@ push(@_RULE_IDS, '-');
 
 # define configuration
 %app_config = (
-    'libdir',   'sdf/home',
+    'libdir',   'SDF/home',
 );
 
 # define options

@@ -12,7 +12,7 @@ user interface and internal structure, making them easier to
 use and maintain. A typical script looks like:
 
 !block verbatim
-     require "sdf/app.pl";
+     require "SDF/app.pl";
 
      # define configuration
      %app_config = (

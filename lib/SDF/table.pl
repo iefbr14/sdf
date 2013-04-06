@@ -56,7 +56,7 @@ $VERSION{''.__FILE__} = '$Revision$';
 # >>Implementation::
 #
 
-require "sdf/misc.pl";
+require "SDF/misc.pl";
 
 ######### Constants #########
 
