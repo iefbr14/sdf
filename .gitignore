@@ -1,5 +1,6 @@
 .*.swp
 t/*/*.out
+*.old
 MYMETA.json
 MYMETA.yml
 Makefile
