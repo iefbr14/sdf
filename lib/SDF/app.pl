@@ -42,9 +42,9 @@ $_app_path = $0;
 BEGIN {
   require "locale.pm" if $] >= 5.004;
 }
-require "sdf/name.pl";
-require "sdf/misc.pl";
-require "sdf/table.pl";
+require "SDF/name.pl";
+require "SDF/misc.pl";
+require "SDF/table.pl";
 
 ######### Constants #########
 

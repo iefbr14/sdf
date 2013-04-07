@@ -54,13 +54,13 @@ $VERSION{''.__FILE__} = '$Revision$';
 # >>Implementation::
 #
 
-require "sdf/app.pl";
+require "SDF/app.pl";
 
 ########## Initialisation ##########
 
 # define configuration
 %app_config = (
-    'libdir',   'sdf/home',
+    'libdir',   'SDF/home',
 );
 
 # define options

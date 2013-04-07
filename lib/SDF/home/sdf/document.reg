@@ -39,3 +39,4 @@ MTR-SDF-0008 001     Final   release/rn_sdf.html  SDF Release Notes
 MTR-SDF-0011 001     Final   genhtml/index.html   Generating HTML Using SDF
 MTR-SDF-0012 001     Final   podusers/index.html  SDF for POD Users
 SDF-FAQ      001     Final   faq/faq.html         SDF Frequently Asked Questions
+SDF-DEV      001     Draft   devel/dg_sdf.html    SDF Developer Guide

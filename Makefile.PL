@@ -16,23 +16,62 @@ EOT
 }
 
 use ExtUtils::MakeMaker;
+use File::ShareDir::Install;
 
 WriteMakefile(
-	'NAME'		=> 'SDF',
-	'DISTNAME'	=> 'sdf',
-	'VERSION'	=> '2.001',
+	NAME		=> 'SDF',
+	ABSTRACT	=> 'Simple Document Formatter',
+	DISTNAME	=> 'sdf',
+	VERSION		=> '2.2.0',
+	AUTHOR		=> q{Drew Sullivan <drew@ss.org>},
 
-	'DIR'		=> [ qw(bin perllib) ],
+#	LICENSE		=> 'Artistic_2_0',
+
+#	CPANID		=> 'DSULLIVAN',
+#	ORGANIZATION	=> 'Systems Software',
+#	WEBSITE		=> 'http://www.ss.org/sdf',
+
+
+	MIN_PERL_VERSION => 5.006,
+
+#	'DIR'		=> [ qw(bin lib) ],
+	EXE_FILES => [ qw(
+		bin/mkpldocs
+		bin/pod2sdf
+		bin/poddiff
+		bin/sdf
+		bin/sdfapi
+		bin/sdfcli
+		bin/sdfget
+	) ],
+
 
 	'dist'          => {'COMPRESS'=>'gzip -9f', 'SUFFIX'=>'.gz'},
+
+	PREREQ_PM    => {
+			# if you need an earlier version let me know
+#			'File::ShareData' => 1.00,
+#			'File::ShareData::Install' => 1.00,
+			'Test::Harness' => 3.00,
+			'Test::Simple' => 0.44,
+                    },
+
+
+#MAN1PODS            => {
+#    'doc/command.pod'    => 'blib/man1/command.1',
+#    'scripts/script.pl'  => 'blib/man1/script.1',
+#  }
 	);
+
+#install_share 'share';
 
 package MY;
 
+use File::ShareDir::Install qw(postamble);
+
 # What happens when we say 'make test'
 # Copied libwww Makefile.PL
-sub test
-{
+sub test {
     q(
 TEST_VERBOSE=0
 
