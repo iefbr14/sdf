@@ -16,7 +16,7 @@ EOT
 }
 
 use ExtUtils::MakeMaker;
-use File::ShareDir::Install;
+#use File::ShareDir::Install;
 
 WriteMakefile(
 	NAME		=> 'SDF',
@@ -67,7 +67,7 @@ WriteMakefile(
 
 package MY;
 
-use File::ShareDir::Install qw(postamble);
+#use File::ShareDir::Install qw(postamble);
 
 # What happens when we say 'make test'
 # Copied libwww Makefile.PL
